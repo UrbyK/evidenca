@@ -1,0 +1,326 @@
+@import url('http://fonts.googleapis.com/css?family=Oxygen+Mono');
+@import url('https://fonts.googleapis.com/css?family=Damion|Neucha|Pacifico|Yellowtail&display=swap');
+
+* {
+    text-decoration: none;
+}
+
+body{
+    padding: 0;
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: 'Josefin Slab', Helvetica, Palatino, Verdana, sans-serif;
+    background-color: #efefef;
+}
+
+a{
+    color: #1b9bff;
+    font-family: "Open Sans", Helvetica, sans-serif;
+
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: #1b9bff;
+    font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;
+/*font-family: 'Oxygen Mono', Tahoma, Arial, sans-serif;*/
+}
+
+h1{
+    font-size: 30px;
+}
+
+h2{
+    font-size: 26px;
+}
+
+h3{
+    font-size: 22px;
+}
+
+h4{
+    font-size: 18px;
+}
+
+h5{
+    font-size: 14px;
+}
+
+h6{
+    font-size: 10px;
+}
+
+/* ========= HEADER ======== */
+
+/*Banner*/
+header .banner{
+    max-width: 100%;
+    max-height: 250px;
+    min-height: 50px;
+    height: auto;
+    position: relative;
+    top: 0px;
+    margin: 0 auto;
+/*background-image: url(../img/animals-2222007_1920.jpg);*/
+}
+
+header .banner img{
+    max-width: 100%;
+    width: 100%;
+    max-height: 250px;
+    min-height: 50px;
+    height: auto;
+    position: relative;
+    top: 0px;
+    margin: 0 auto;
+}
+
+/* hide banner */
+@media all and (max-width: 800px){
+.banner{
+    display: none;
+    }   
+}
+
+/* NAVBAR */
+
+.navbar {
+    background-color: #353535;
+    color: #0091ff;
+    font-weight: 600;
+}
+
+.active {
+    border-bottom: 2px solid #1b9bff;
+}
+
+.navbar button {
+background-color: #eee;
+}
+
+.navbar button i {
+    margin: auto;
+}
+.navbar .dropdown .dropbtn{
+    background-color: inherit;
+}
+
+/* to override the existing css for "a" tag */
+.navbar .active a {
+    color: #fff;
+}
+
+#navbarToggler ul li {
+    border-right: 1px solid #eee;
+}
+
+#navbarToggler ul li:last-child {
+    border-right: none;
+}
+
+/* shoping cart icon */
+.link-icons {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    max-width: 50px;
+}
+.link-icons a {
+    text-decoration: none;
+    color: #63748e;
+    padding: 0 10px;
+}
+.link-icons a:hover {
+    color: #8e97a5;
+}
+.link-icons a i {
+    font-size: 18px;
+}
+.link-icons a span {
+    display: inline-block;
+    text-align: center;
+    background-color: #63748e;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 16px;
+    width: 16px;
+    height: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 22px;
+    right: 0;
+}
+
+/* HOVER DROPDOWN */
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #1b9bff;
+}
+
+/* FOOTER */
+footer {
+    background: #535355;
+    background: -webkit-linear-gradient(63deg, #777777, #222222);
+    background: linear-gradient(63deg, #777777, #222222);
+    color: white;
+    }
+
+footer a {
+    color: #fefefe;
+    font-size: 14px;
+    transition-duration: 0.2s;
+}
+
+footer a:hover {
+    color: #1b9bff;
+    text-decoration: none;
+}
+
+.copy {
+    font-size: 12px;
+    padding: 10px;
+    border-top: 1px solid #aaa;
+}
+
+.footer-wrapper {
+    padding-top: 2em;
+    color: white;
+}
+
+
+
+/*SOCIAL ICONS*/
+/* footer social icons */
+
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0;
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0 5px;
+}
+
+
+/* footer social icons */
+
+.social-network a.icoFacebook:hover {
+background-color: #3B5998;
+}
+
+.social-network a.icoLinkedin:hover {
+background-color: #007bb7;
+}
+
+.social-network a.icoYoutube:hover {
+    background-color: #FF0000;
+}
+
+.social-network a.icoTwitter:hover {
+    background-color: #00aced;
+}
+
+.social-network a.icoFacebook:hover i,
+.social-network a.icoLinkedin:hover i,
+.social-network a.icoYoutube:hover i,
+.social-network a.icoTwitter:hover i{
+    color: #fff;
+}
+
+.social-network a.socialIcon:hover,
+.socialHoverClass {
+    color: #44BCDD;
+}
+
+.social-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    color: #353535;
+}
+
+.social-circle li i {
+    margin: 0;
+    line-height: 30px;
+    text-align: center;
+}
+
+.social-circle li a:hover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms--transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    transition: all 0.6s;
+    color: #fff;
+}
+
+.social-circle i {
+    color: #353535;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
+}
+/* backgounf of icons when displayed */
+.social-network a {
+    background-color: #f9f9f9;
+}
