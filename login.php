@@ -1,7 +1,7 @@
 <?=template_header("Login")?>
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-sm-8">
         <div class="card">
             <div class="card-header">
                 <h1 class="card-title">Prijava</h1>

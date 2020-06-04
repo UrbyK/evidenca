@@ -1,7 +1,7 @@
 <?=template_header("Registracija")?>
 
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-sm-8">
         <div class="card">
             <div class="card-header">
                 <h1 class="card-title">Registracija</h1>

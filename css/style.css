@@ -104,7 +104,7 @@ header .banner img{
 }
 .navbar .dropdown .dropbtn{
     background-color: inherit;
-    color: #1b9bff;
+    color: inherit;
     font: inherit;
 }
 
@@ -160,10 +160,14 @@ header .banner img{
 
 /* HOVER DROPDOWN */
 .dropbtn {
-    color: white;
+    color: inherit;
     padding: 16px;
     font-size: 16px;
     border: none;
+}
+
+.dropbtn:hover {
+    color: inherit;
 }
 
 /* The container <div> - needed to position the dropdown content */
