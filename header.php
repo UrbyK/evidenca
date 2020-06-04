@@ -59,11 +59,25 @@
 
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="dropbtn">Dropdown</button>
+                            <button class="dropbtn">Živali</button>
                             <div class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
+                                <a href="#">Govedo</a>
+                                <a href="#">Koze</a>
+                                <a href="#">Ovce</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="dropbtn"><a href="./index.php?page=profile" title="Profile"><i class="fas fa-user"></i> Profil</a></button>
+                            <div class="dropdown-content">
+                                <?php if(empty($_SESSION['user_id'])): ?>
+                                    <a class="nav-link" href="./index.php?page=login" title="Login"><i class="fas fa-sign-in-alt"></i></i> Prijava</a>
+                                    <a class="nav-link" href="./index.php?page=register" title="Register"><i class="fas fa-user-plus"></i> Registracija</a>
+                                <?php endif; ?>
+                                <?php if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])): ?>
+                                    <a class="nav-link" href="./index.php?page=logout" title="Logout"><i class="fas fa-sign-out-alt"></i></i>Izpis</a>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </li>
