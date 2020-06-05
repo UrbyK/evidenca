@@ -346,10 +346,6 @@ background-color: #007bb7;
     font-family: Raleway, sans-serif;
 }
 
-.my-form h1{
-    font-family: inherit;
-}
-
 .my-form .row
 {
     margin-left: 0;
@@ -358,8 +354,8 @@ background-color: #007bb7;
 
 .form-control{
     border: 1px solid #ced4da;
-    border-radius: .20rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .card {
     box-shadow: 10px 10px 20px rgba(0,0,0,0.2);

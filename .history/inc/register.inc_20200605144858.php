@@ -19,12 +19,12 @@
         }
 
     }
-    else{
+    /*else{
 
         echo "<script type='text/javascript'> document.location = '../index.php?page=register'; </script>";
         exit();
     }
     echo "<script type='text/javascript'> document.location = '../index.php?page=login'; </script>";
     exit();
-
+*/
 ?>

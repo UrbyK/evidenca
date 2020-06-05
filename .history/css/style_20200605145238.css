@@ -1,6 +1,5 @@
 @import url('http://fonts.googleapis.com/css?family=Oxygen+Mono');
 @import url('https://fonts.googleapis.com/css?family=Damion|Neucha|Pacifico|Yellowtail&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600');
 
 * {
     text-decoration: none;
@@ -343,11 +342,6 @@ background-color: #007bb7;
 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    font-family: Raleway, sans-serif;
-}
-
-.my-form h1{
-    font-family: inherit;
 }
 
 .my-form .row
@@ -356,11 +350,11 @@ background-color: #007bb7;
     margin-right: 0;
 }
 
-.form-control{
-    border: 1px solid #ced4da;
-    border-radius: .20rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+.my-form input {
+    box-shadow: 0 2px 4px rgba(0,0,0,.04);
+    border: 1px solid #757575;
 }
+
 .card {
     box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
 }

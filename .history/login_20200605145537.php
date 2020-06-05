@@ -10,13 +10,13 @@
                 <div class="card-body">
                     <form method="post" action="./inc/login.inc.php" class="content">
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="username">Uporabniško ime</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="username">Uporabniško ime:</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="username" id="username" placeholder="Uporabniško ime" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="password">Geslo</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="password">Geslo:</label>
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Geslo" required>
                             </div>

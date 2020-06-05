@@ -358,7 +358,7 @@ background-color: #007bb7;
 
 .form-control{
     border: 1px solid #ced4da;
-    border-radius: .20rem;
+    border-radius: .25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 .card {

@@ -13,7 +13,7 @@
         if(!empty($username) && !empty($email) && !empty($pass) && !empty($pass) && ($pass==$pass_conf)){
             $pass = password_hash($pass, PASSWORD_DEFAULT);
             $query = "INSERT INTO users (fname, lname, username, email, password)
-                VALUES(?,?,?,?,?)";
+                VALUES(?,?,?)";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$fname, $lname, $username, $email, $pass]);
         }

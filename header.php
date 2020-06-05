@@ -69,14 +69,15 @@
 
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="dropbtn"><i class="fas fa-user"></i> Profil</button>
+                            <button class="dropbtn"><i class="fas fa-user"></i> Uporabnik</button>
                             <div class="dropdown-content">
                                 <?php if(empty($_SESSION['user_id'])): ?>
                                     <a class="nav-link" href="./index.php?page=login" title="Login"><i class="fas fa-sign-in-alt"></i></i> Prijava</a>
                                     <a class="nav-link" href="./index.php?page=register" title="Register"><i class="fas fa-user-plus"></i> Registracija</a>
                                 <?php endif; ?>
                                 <?php if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])): ?>
-                                    <a class="nav-link" href="./index.php?page=logout" title="Logout"><i class="fas fa-sign-out-alt"></i></i>Izpis</a>
+                                    <a class="nav-link" href="./index.php?page=profile" title="Profil"><i class="fas fa-address-card"></i> Profil</a>
+                                    <a class="nav-link" href="./index.php?page=logout" title="Logout"><i class="fas fa-sign-out-alt"></i> Izpis</a>
                                 <?php endif; ?>
                             </div>
                         </div>

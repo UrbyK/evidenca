@@ -11,36 +11,36 @@
                     <form method="post" action="./inc/register.inc.php" class="content">
 
                         <div class="form-group row">
-                            <label class="col-md-4 cold-form-label text-md-right" for="fname">Ime</label>
+                            <label class="col-md-4 cold-form-label text-md-right" for="fname">Ime:</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="fname" id="fname" placeholder="Ime" required>
                             </div>
-                            <label class="col-md-4 cold-form-label text-md-right" for="lname">Priimek</label>
+                            <label class="col-md-4 cold-form-label text-md-right" for="lname">Priimek:</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="lname" id="lname" placeholder="Priimek" required>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="username">Uporabniško ime</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="username">Uporabniško ime:</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="username" id="username" placeholder="Uporabniško ime" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="email">Elektronska pošta</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="email">Elektronska pošta:</label>
                             <div class="col-md-6">
                                 <input type="email" class="form-control" name="email" id="email" placeholder="Elektronska pošta" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="password">Geslo</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="password">Geslo:</label>
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password" id="password" placeholder="Geslo" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="confirm_password">Potrdite geslo</label>
+                            <label class="col-md-4 col-form-label text-md-right" for="confirm_password">Potrdite geslo:</label>
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Potrdite geslo" required>
                             </div>
