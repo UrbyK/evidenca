@@ -337,6 +337,13 @@ background-color: #007bb7;
 }
 
 
+/* FORMS */
+input{
+    border: 1px solid #ced4da;
+    border-radius: .20rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
 /* LOGIN && REGISTRATION FORMS */
 
 .my-form

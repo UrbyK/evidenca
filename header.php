@@ -77,6 +77,7 @@
                                 <?php endif; ?>
                                 <?php if(isset($_SESSION['user_id']) && !empty($_SESSION['user_id'])): ?>
                                     <a class="nav-link" href="./index.php?page=profile" title="Profil"><i class="fas fa-address-card"></i> Profil</a>
+                                    <a class="nav-link" href="./index.php?page=animal-add" title="Dodaj žival">Dodaj žival</a>
                                     <a class="nav-link" href="./index.php?page=logout" title="Logout"><i class="fas fa-sign-out-alt"></i> Izpis</a>
                                 <?php endif; ?>
                             </div>
