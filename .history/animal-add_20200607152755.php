@@ -8,7 +8,7 @@
                     <h1 class="card-title">Vnos živali</h1>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="./inc/animal-insert.inc.php" class="content" enctype="multipart/form-data">
+                    <form method="POST" action="./inc/animal-insert.inc.php" class="content">
                         <div class="form-group">
                             <label>Ime:</label>
                             <input type="text" name="name" id="name" placholder="Ime živali" required>
@@ -95,10 +95,6 @@
                                     <option value="<?=$status['idhealth']?>"><?=$status['status']?></option>
                                 <?php endforeach; ?>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Slike:</label>
-                            <input type="file" name="files" id="files">
                         </div>
                         <div class="col-md-6">
                             <button type="submit" name="sub_btn" class="btn btn-primary" id="save" value="Sharni">Shrani</button>

@@ -35,6 +35,7 @@
        
         $last_id = $pdo->lastInsertId();
         $url = $_FILES['files']['name'];
+        echo $url;
         image_upload($last_id, $url);
 
 

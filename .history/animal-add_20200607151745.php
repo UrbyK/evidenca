@@ -1,11 +1,11 @@
 <?=template_header('Dodaja_zivali')?>
 
-<div class="insert-form my-form">
+<div class="my-form">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card user-form">
-                <div class="card-header">
-                    <h1 class="card-title">Vnos živali</h1>
+                <div clas="card-header">
+                    <h1 class="card-tittle">Vnos živali</h1>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="./inc/animal-insert.inc.php" class="content" enctype="multipart/form-data">
@@ -15,9 +15,7 @@
 
                             <label>Ušesna oznaka:</label>
                             <input type="text" name="ear_tag" id="ear_tag" placeholder="SI12594493/SI745165" required>
-                        </div>
 
-                        <div class="form-group">
                             <label>Rojstvo:</label>
                             <input type="date" name="birth" id="birth" required>
 
@@ -95,10 +93,6 @@
                                     <option value="<?=$status['idhealth']?>"><?=$status['status']?></option>
                                 <?php endforeach; ?>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Slike:</label>
-                            <input type="file" name="files" id="files">
                         </div>
                         <div class="col-md-6">
                             <button type="submit" name="sub_btn" class="btn btn-primary" id="save" value="Sharni">Shrani</button>

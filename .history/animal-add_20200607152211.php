@@ -1,6 +1,6 @@
 <?=template_header('Dodaja_zivali')?>
 
-<div class="insert-form my-form">
+<div class="insert-form">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card user-form">
@@ -95,10 +95,6 @@
                                     <option value="<?=$status['idhealth']?>"><?=$status['status']?></option>
                                 <?php endforeach; ?>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Slike:</label>
-                            <input type="file" name="files" id="files">
                         </div>
                         <div class="col-md-6">
                             <button type="submit" name="sub_btn" class="btn btn-primary" id="save" value="Sharni">Shrani</button>

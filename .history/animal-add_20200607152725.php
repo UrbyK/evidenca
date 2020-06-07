@@ -96,10 +96,6 @@
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Slike:</label>
-                            <input type="file" name="files" id="files">
-                        </div>
                         <div class="col-md-6">
                             <button type="submit" name="sub_btn" class="btn btn-primary" id="save" value="Sharni">Shrani</button>
                         </div>

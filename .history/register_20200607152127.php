@@ -1,6 +1,6 @@
 <?=template_header("Registracija")?>
 
-<div class="my-form">
+<div class="insert-form">
     <div class="row justify-content-center">
         <div class="col-sm-8">
             <div class="card user-form">
@@ -11,11 +11,11 @@
                     <form method="post" action="./inc/register.inc.php" class="content">
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right" for="fname">Ime</label>
+                            <label class="col-md-4 cold-form-label text-md-right" for="fname">Ime</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="fname" id="fname" placeholder="Ime" required>
                             </div>
-                            <label class="col-md-4 col-form-label text-md-right" for="lname">Priimek</label>
+                            <label class="col-md-4 cold-form-label text-md-right" for="lname">Priimek</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="lname" id="lname" placeholder="Priimek" required>
                             </div>

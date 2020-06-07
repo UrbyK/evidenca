@@ -34,7 +34,8 @@
         $stmt->execute([$name, $ear_tag, $birth, $sex, $user, $mother, $father, $breed, $pregnancy, $health]);
        
         $last_id = $pdo->lastInsertId();
-        $url = $_FILES['files']['name'];
+        $url = $_POST['files'];
+        echo $url;
         image_upload($last_id, $url);
 
 

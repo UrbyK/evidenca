@@ -58,9 +58,8 @@
 
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="dropbtn">Živali</button>
+                            <button class="dropbtn"><a class="nav-link" href="./index.php?page=animals">Živali</a></button>
                             <div class="dropdown-content">
-                                <a class="nav-link" href="./index.php?page=animals">Vse živali</a>
                                 <a href="#">Govedo</a>
                                 <a href="#">Koze</a>
                                 <a href="#">Ovce</a>
