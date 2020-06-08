@@ -1,4 +1,8 @@
 <?php 
+    if(!empty($_SESSION['user_id']) && isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+    }
+
     $num_of_animals_per_page = 8;
 
     $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
@@ -19,12 +23,14 @@
     $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
+
+
 ?>
 
 <?=template_header("Živali")?>
 <?php foreach($animals as $animal): ?>
 <div class="row animal-table">
-    <table class="table-responsive-lg">
+    <table class="">
         <thead>
             <tr>
                 <th></th>
@@ -77,7 +83,7 @@
         
         <a href="./index.php?page=animal&id=<?=$animal['idanimals']?>" class="btn btn-primary">Pogled</a>
 
-        <?php if(($animal['fk_idusers'])=== $_SESSION['user_id']):?>
+        <?php if(($animal['fk_idusers']) == $user_id):?>
             <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
         <?php endif; ?>
                     

@@ -24,7 +24,7 @@
 <?=template_header("Živali")?>
 <?php foreach($animals as $animal): ?>
 <div class="row animal-table">
-    <table class="table-responsive-lg">
+    <table class="">
         <thead>
             <tr>
                 <th></th>

@@ -2,16 +2,18 @@
     $num_of_animals_per_page = 8;
 
     $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
-
+    $q = intval($_GET['q']);
 
     $query="SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
     INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
     INNER JOIN sex s  ON a.fk_idsex = s.idsex LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
     INNER JOIN health h ON a.fk_idhealth = h.idhealth
+    WHERE aty.idanimal_types = ?
     ORDER BY idanimals DESC LIMIT ?, ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
 
+    $stmt->bindValue(1, $q, PDO::PARAM_INT);
     $stmt->bindValue(1, ($current_page - 1) * $num_of_animals_per_page, PDO::PARAM_INT);
     $stmt->bindValue(2, $num_of_animals_per_page, PDO::PARAM_INT);
     $stmt->execute();
@@ -22,7 +24,22 @@
 ?>
 
 <?=template_header("Živali")?>
+    <form>
+        <select name="animal_types" onchange="showAnimal(this.value)">
+            <option value="">Izberite tip živali</option>
+            <?php  $query = "SELECT * FROM animal_types";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+                $items= $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach($items as $item): ?>
+                <option value="<?=$item['type']?>"><?=$item['type']?></option>
+                <?php endforeach; ?>
+                <div id="txtHint"><b>Person info will be listed here...</b></div>
+
+        </select>
+    </form>
 <?php foreach($animals as $animal): ?>
+
 <div class="row animal-table">
     <table class="table-responsive-lg">
         <thead>
@@ -97,5 +114,24 @@
     </div>
 </div>
 
+<script>
+function showAnimalType(str) {
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","./animals-bovine.php?q="+str,true);
+    xmlhttp.send();
+  }
+}
+</script>
+
 
 <?=template_footer()?>
+

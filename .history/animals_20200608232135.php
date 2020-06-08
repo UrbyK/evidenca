@@ -24,7 +24,7 @@
 <?=template_header("Živali")?>
 <?php foreach($animals as $animal): ?>
 <div class="row animal-table">
-    <table class="table-responsive-lg">
+    <table class="">
         <thead>
             <tr>
                 <th></th>
@@ -78,7 +78,7 @@
         <a href="./index.php?page=animal&id=<?=$animal['idanimals']?>" class="btn btn-primary">Pogled</a>
 
         <?php if(($animal['fk_idusers'])=== $_SESSION['user_id']):?>
-            <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
+            <<a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
         <?php endif; ?>
                     
 

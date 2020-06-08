@@ -22,7 +22,20 @@
 ?>
 
 <?=template_header("Živali")?>
+    <form>
+        <select name="animal_types" onchange="showAnimal(this.value)">
+            <option value="">Izberite tip živali</option>
+            <?php  $query = "SELECT * FROM animal_types";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+                $items= $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach($items as $item): ?>
+                <option value="<?=$item['type']?>"><?=$item['type']?></option>
+                <?php endforeach; ?>
+        </select>
+    </form>
 <?php foreach($animals as $animal): ?>
+
 <div class="row animal-table">
     <table class="table-responsive-lg">
         <thead>

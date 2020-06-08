@@ -491,10 +491,11 @@ input{
 }
 .animal-table table{
     width: 100%;
+
 }
 
 .animal-table table th{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 600;
 }
 
@@ -505,10 +506,9 @@ input{
     border: 2px solid #353535;
     box-shadow: 0 0 0 3px hsl(0, 0%, 70%);
     min-width: 100px;
-
+    min-height: 25px;
 }
 
 .animal-table table td{
     min-width: 100px;
-
 }

@@ -22,7 +22,22 @@
 ?>
 
 <?=template_header("Živali")?>
+    <form>
+        <select name="animal_types" onchange="showAnimal(this.value)">
+            <option value="">Izberite tip živali</option>
+            <?php  $query = "SELECT * FROM animal_types";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+                $items= $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach($items as $item): ?>
+                <option value="<?=$item['type']?>"><?=$item['type']?></option>
+                <?php endforeach; ?>
+                <div id="txtHint"><b>Person info will be listed here...</b></div>
+
+        </select>
+    </form>
 <?php foreach($animals as $animal): ?>
+
 <div class="row animal-table">
     <table class="table-responsive-lg">
         <thead>
@@ -99,3 +114,21 @@
 
 
 <?=template_footer()?>
+
+<script>
+function showAnimalType(str) {
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("txtHint").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET","getuser.php?q="+str,true);
+    xmlhttp.send();
+  }
+}
+</script>

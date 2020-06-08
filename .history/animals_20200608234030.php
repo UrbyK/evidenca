@@ -1,5 +1,9 @@
 <?php 
-    $num_of_animals_per_page = 8;
+    if(!empty($_SESSION['user_id']) && isset($_SESSION['user_id'])){
+        $user_id = $_SESSION['user_id'];
+    }
+
+    $num_of_animals_per_page = 10;
 
     $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
 
@@ -19,6 +23,8 @@
     $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
+
+
 ?>
 
 <?=template_header("Živali")?>
@@ -77,7 +83,7 @@
         
         <a href="./index.php?page=animal&id=<?=$animal['idanimals']?>" class="btn btn-primary">Pogled</a>
 
-        <?php if(($animal['fk_idusers'])=== $_SESSION['user_id']):?>
+        <?php if(($animal['fk_idusers']) == $user_id):?>
             <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
         <?php endif; ?>
                     
@@ -90,10 +96,12 @@
 <div class="row justify-content-center">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" id="page-btn" role="group" aria-label="First group">
-            <?php for($i = 0; $i <= ($total_animals/$num_of_animals_per_page); $i++): ?>
-                <a href="./index.php?page=animals&p=<?=$i + 1?>"><button type="button" class="btn btn-secondary"><?=$i + 1?></button></a>
+            <?php for($i = 1; $i < floor($total_animals/$num_of_animals_per_page)-2; $i++): ?>
+                <a href="./index.php?page=animals&p=<?=$i?>"><button type="button" class="btn btn-secondary"><?=$i?></button></a>
             <?php endfor; ?>
         </div>
+        <?=$total_animals?>
+        <?=floor($total_animals/$num_of_animals_per_page)?>
     </div>
 </div>
 

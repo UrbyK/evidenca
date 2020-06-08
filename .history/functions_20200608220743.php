@@ -19,8 +19,8 @@ function get_animal($idanimal){
         echo $item['ear_tag'] ." ".$item['name'];
     endforeach;
 }
-function is_admin(){
 
-}
+
+
 
 ?>

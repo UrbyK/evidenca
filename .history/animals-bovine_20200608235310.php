@@ -5,20 +5,26 @@
 
 
     $query="SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
-    INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
-    INNER JOIN sex s  ON a.fk_idsex = s.idsex LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
+    INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds 
+    INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
+    INNER JOIN sex s  ON a.fk_idsex = s.idsex 
+    LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
     INNER JOIN health h ON a.fk_idhealth = h.idhealth
+    WHERE aty.type = ?
     ORDER BY idanimals DESC LIMIT ?, ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
 
-    $stmt->bindValue(1, ($current_page - 1) * $num_of_animals_per_page, PDO::PARAM_INT);
-    $stmt->bindValue(2, $num_of_animals_per_page, PDO::PARAM_INT);
+    $stmt->bindValue(1, 'Govedo');
+    $stmt->bindValue(2, ($current_page - 1) * $num_of_animals_per_page, PDO::PARAM_INT);
+    $stmt->bindValue(3, $num_of_animals_per_page, PDO::PARAM_INT);
+
     $stmt->execute();
 
     $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
+    $total_animals = $pdo->query('SELECT * FROM animals LEFT JOIN breeds b ON a.fk_idbreeds = b.idbreeds
+    INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types')->rowCount();
 ?>
 
 <?=template_header("Živali")?>
@@ -75,7 +81,7 @@
     </table>
     <div class="controls">
         
-        <a href="./index.php?page=animal&id=<?=$animal['idanimals']?>" class="btn btn-primary">Pogled</a>
+        <a href="./index.php?page=animal-bovine&id=<?=$animal['idanimals']?>" class="btn btn-primary">Pogled</a>
 
         <?php if(($animal['fk_idusers'])=== $_SESSION['user_id']):?>
             <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>

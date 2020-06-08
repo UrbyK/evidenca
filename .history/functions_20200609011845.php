@@ -23,4 +23,19 @@ function is_admin(){
 
 }
 
+function animalTypeSelect($type){
+    $pdo = pdo_connect_mysql();
+
+    $query="SELECT idanimal_types FROM animal_types WHERE lower(type) = lower($type)";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $tip = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   foreach($tip as $item){
+       return($item['idanimal_types'])
+   }
+   endforeach;
+   
+}
+
 ?>

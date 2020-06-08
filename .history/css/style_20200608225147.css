@@ -486,29 +486,19 @@ input{
 }
 
 /* ANIMAL SHOW */
-.animal-table{
-    margin: 5px;
+.rov div{
+    min-width: 100%;
 }
-.animal-table table{
-    width: 100%;
-}
-
-.animal-table table th{
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.animal-table table,
-.animal-table table tr td,
-.animal-table table tr th{
+.row table,
+.row table td,
+.row table th{
     margin: 15px auto 0 auto;
     border: 2px solid #353535;
     box-shadow: 0 0 0 3px hsl(0, 0%, 70%);
-    min-width: 100px;
+    width: fit-content;
 
 }
 
-.animal-table table td{
+.row table td{
     min-width: 100px;
-
 }

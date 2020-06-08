@@ -1,28 +1,40 @@
 <?php 
-    $num_of_animals_per_page = 8;
 
     $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
-
+       
+    $q = 2;
 
     $query="SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
     INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
     INNER JOIN sex s  ON a.fk_idsex = s.idsex LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
     INNER JOIN health h ON a.fk_idhealth = h.idhealth
-    ORDER BY idanimals DESC LIMIT ?, ?";
+    WHERE aty.idanimal_types = ?";
     $stmt = $pdo->prepare($query);
-    $stmt->execute();
+    $stmt->execute([$q]);
 
-    $stmt->bindValue(1, ($current_page - 1) * $num_of_animals_per_page, PDO::PARAM_INT);
-    $stmt->bindValue(2, $num_of_animals_per_page, PDO::PARAM_INT);
-    $stmt->execute();
 
     $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
 ?>
 
 <?=template_header("Živali")?>
+    <form>
+        <select name="animal_types" onchange="showAnimals(this.value)" id="animalsShow">
+            <option value="">Izberite tip živali</option>
+            <?php  $query = "SELECT * FROM animal_types";
+                $stmt = $pdo->prepare($query);
+                $stmt->execute();
+                $items= $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach($items as $item): ?>
+                <option value="<?=$item['type']?>"><?=$item['type']?></option>
+                <?php endforeach; ?>
+                        </select>
+    </form>
+    <div id="txtHint"><b>Person info will be listed here...</b></div>
+
+
 <?php foreach($animals as $animal): ?>
+
 <div class="row animal-table">
     <table class="table-responsive-lg">
         <thead>
@@ -86,16 +98,5 @@
 </div>
 <?php endforeach; ?>
 
-<!-- page navigation buttons -->
-<div class="row justify-content-center">
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group mr-2" id="page-btn" role="group" aria-label="First group">
-            <?php for($i = 0; $i <= ($total_animals/$num_of_animals_per_page); $i++): ?>
-                <a href="./index.php?page=animals&p=<?=$i + 1?>"><button type="button" class="btn btn-secondary"><?=$i + 1?></button></a>
-            <?php endfor; ?>
-        </div>
-    </div>
-</div>
-
-
 <?=template_footer()?>
+

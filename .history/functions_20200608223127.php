@@ -19,8 +19,9 @@ function get_animal($idanimal){
         echo $item['ear_tag'] ." ".$item['name'];
     endforeach;
 }
-function is_admin(){
 
+function show_animal($animals){
+    include_once('./show-animals.php');
 }
 
 ?>

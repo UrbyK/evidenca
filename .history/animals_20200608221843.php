@@ -19,15 +19,16 @@
     $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
-?>
+    ?>
 
 <?=template_header("Živali")?>
 <?php foreach($animals as $animal): ?>
-<div class="row animal-table">
-    <table class="table-responsive-lg">
+<div class="row">
+    <div class="table-responsive-lg">
+    <table >
         <thead>
             <tr>
-                <th></th>
+                <th class="col">Slika</th>
                 <th>Ime</th>
                 <th>Oznaka</th>
                 <th>Vrsta</th>
@@ -70,18 +71,8 @@
                 <?php else: echo"N/A"; endif; ?></td>
             </tr>
 
-        </tbody>   
-
+        </tbody>    
     </table>
-    <div class="controls">
-        
-        <a href="./index.php?page=animal&id=<?=$animal['idanimals']?>" class="btn btn-primary">Pogled</a>
-
-        <?php if(($animal['fk_idusers'])=== $_SESSION['user_id']):?>
-            <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
-        <?php endif; ?>
-                    
-
     </div>
 </div>
 <?php endforeach; ?>
