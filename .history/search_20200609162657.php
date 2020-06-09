@@ -13,10 +13,7 @@ $search_item = "";
         INNER JOIN sex s  ON a.fk_idsex = s.idsex 
         LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
         LEFT JOIN users u ON a.fk_idusers = u.idusers
-        INNER JOIN health h ON a.fk_idhealth = h.idhealth 
-        WHERE a.name LIKE '%".$search_item."%' 
-        OR a.ear_tag LIKE '%".$search_item."%'
-        OR lower(b.breed) LIKE  lower('%".$search_item."%')
+        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.name LIKE '%".$search_item."%' OR a.ear_tag LIKE '%".$search_item."%'
         OR lower(aty.type) LIKE lower('%".$search_item."%')" );
 
 $stmt->execute();

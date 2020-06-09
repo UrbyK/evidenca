@@ -8,6 +8,7 @@
     INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
     INNER JOIN sex s  ON a.fk_idsex = s.idsex LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
     INNER JOIN health h ON a.fk_idhealth = h.idhealth
+    WHERE lower(aty.type) = lower('Govedo')
     ORDER BY idanimals DESC LIMIT ?, ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
@@ -21,7 +22,8 @@
     $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
 ?>
 
-<?=template_header("Živali")?>
+<?=template_header("Govedo")?>
+
 <?=show_animals($animals)?>
 
 <!-- page navigation buttons -->

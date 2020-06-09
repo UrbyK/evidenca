@@ -2,12 +2,13 @@
     $num_of_animals_per_page = 8;
 
     $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
-
+    $user_id = $_SESSION['user_id'];
 
     $query="SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
     INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
     INNER JOIN sex s  ON a.fk_idsex = s.idsex LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
     INNER JOIN health h ON a.fk_idhealth = h.idhealth
+    WHERE a.fk_idusers = $user_id
     ORDER BY idanimals DESC LIMIT ?, ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
@@ -21,7 +22,7 @@
     $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
 ?>
 
-<?=template_header("Živali")?>
+<?=template_header("Živali uporabnika")?>
 <?=show_animals($animals)?>
 
 <!-- page navigation buttons -->

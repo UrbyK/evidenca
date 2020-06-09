@@ -62,7 +62,7 @@
                             <div class="dropdown-content">
                                 <a class="nav-link" href="./index.php?page=animals">Vse živali</a>
                                 <a class="nav-link" href="./index.php?page=animals-user">Moje živali</a>
-                                <a class="nav-link" href="./index.php?page=animals-bovine">Govedo</a>
+
                                 <a class="nav-link" href="./index.php?page=animals-goat">Koze</a>
                                 <a class="nav-link" href="./index.php?page=animals-sheep">Ovce</a>
 

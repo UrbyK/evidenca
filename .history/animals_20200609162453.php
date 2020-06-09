@@ -22,18 +22,7 @@
 ?>
 
 <?=template_header("Živali")?>
+
 <?=show_animals($animals)?>
-
-<!-- page navigation buttons -->
-<div class="row justify-content-center">
-    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group mr-2" id="page-btn" role="group" aria-label="First group">
-            <?php for($i = 0; $i <= ($total_animals/$num_of_animals_per_page); $i++): ?>
-                <a href="./index.php?page=animals&p=<?=$i + 1?>"><button type="button" class="btn btn-secondary"><?=$i + 1?></button></a>
-            <?php endfor; ?>
-        </div>
-    </div>
-</div>
-
 
 <?=template_footer()?>

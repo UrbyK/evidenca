@@ -38,10 +38,9 @@
                             <label class="col-md-4 col-form-label text-md-right" for="num_ani">Število živali</label>
                             <div class="col-md-6">
                                 <?php 
-                                    $sql = "SELECT COUNT(*) FROM animals WHERE fk_idusers = ?";
-                                    $total_animals = $pdo->query("SELECT * FROM animals WHERE fk_idusers = $idusers")->rowCount()
+                                    $sql = "SELECT COUNT(*) FROM animals WHERE fk_idusers = $result['idusers']";
                                 ?>
-                                <input type="text" class="form-control" name="num_ani" id="num_ani" value="<?=$total_animals?>" disabled>
+                                <input type="text" class="form-control" name="num_ani" id="num_ani" value="<?=$result['fname']?>" disabled>
                             </div>
                         </div>
 
