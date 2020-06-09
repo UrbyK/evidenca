@@ -4,8 +4,8 @@
 
 <?=template_header("Home")?>
 
-<div class="row justify-content-center home-row">
-    <div class="card home-card">
+<div class="row justify-content-center">
+    <div class="card">
         <div class="card-header">
             <h1 class="card-title">Dobrodošli! Dostopate do evidence živali!</h1>
         </div>
