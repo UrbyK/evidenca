@@ -1,5 +1,5 @@
 INSERT INTO pregnancies(pregnancy)
-VALUES('Ne');
+VALUES('N/A');
 INSERT INTO pregnancies(pregnancy)
 VALUES('Breja');
 INSERT INTO pregnancies(pregnancy)
