@@ -23,22 +23,22 @@
 
 <?=template_header("Živali")?>
 <?php foreach($animals as $animal): ?>
-<div class="row">
+<div class="row animal-table">
     <table class="table-responsive-lg table table-dark">
         <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Ime</th>
-                <th scope="col">Oznaka</th>
-                <th scope="col">Vrsta</th>
-                <th scope="col">Pasma</th>
-                <th scope="col">Spol</th>
+                <th scope="row"></th>
+                <th scope="row">Ime</th>
+                <th scope="row">Oznaka</th>
+                <th scope="row">Vrsta</th>
+                <th scope="row">Pasma</th>
+                <th scope="row">Spol</th>
                 <?php if($animal['tag'] == 'F'): ?>
-                    <th scope="col">Brejost</th>
+                    <th scope="row">Brejost</th>
                 <?php endif; ?>
-                <th scope="col">Zdravje</th>
-                <th scope="col">Mati</th>
-                <th scope="col">Oče</th>
+                <th scope="row">Zdravje</th>
+                <th scope="row">Mati</th>
+                <th scope="row">Oče</th>
             </tr>
         </thead>
         <tbody>

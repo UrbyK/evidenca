@@ -486,7 +486,7 @@ input{
 }
 
 /* ANIMAL SHOW */
-/* .animal-table{
+.animal-table{
     margin: 5px;
 }
 .animal-table table{
@@ -541,7 +541,7 @@ input{
   padding: 20px 0 10px 0;
   color: #1b9bff;
   font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-} */
+}
 
 .home-row{
     height: 60vh;
@@ -562,21 +562,5 @@ input{
 
 .comments{
     margin-left: 25px;
-    max-width: 750px;
-}
-
-.comments .card{
-    width: 100%;
-}
-
-textarea#styled {
-    max-width: 600px;
-    width: 400px;
-	height: 120px;
-	border: 3px solid #cccccc;
-	padding: 5px;
-	font-family: Tahoma, sans-serif;
-	background-image: url(bg.gif);
-	background-position: bottom right;
-	background-repeat: no-repeat;
+    width: 350px
 }

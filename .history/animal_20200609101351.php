@@ -154,10 +154,11 @@
         $stmt = $pdo->prepare($query);
         $stmt->execute([$animal_id]);
         $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        print_r($comments);
         foreach($comments as $comment): ?>
         <div class="col-lg-3 col-md-6 col-sm-9 col-12 acomment">
             <div class="acomment-meta">
-               <?=$comment['username']?> @ <?=$comment['date_add']?>
+                <?=$comment['c.date_add']?>
             </div>
         </div>
         <?php endforeach; ?>

@@ -4,7 +4,6 @@
 
     // check to make sure the id parameter is specified in the URL
     if (isset($_GET['id'])){
-        $animal_id = $_GET['id'];
         // prepare statement and execute, prevents SQL injection
         $stmt = $pdo->prepare('SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
         INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds 
@@ -126,41 +125,13 @@
             </div>
         </div>
     </div>
-    <div class="comments">
-        <div class="card"> 
-                <h3 class="card-title">Komentiraj</h3>
-            <div class ="card-body">
-                <form action="./inc/comment-insert.inc.php" method="post">
-                    <input type="hidden" name="animal_id" value="<?=$animal_id?>" />
-                    <select name="rate">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <br />
-                    <textarea name="content" cols="18" rows="4" id="styled" placeholder="Komentarji..."></textarea>
-
-                    <input class="btn btn-primary" type="submit" value="Shrani" />
-                </form>
-            </div>
-        </div>
+        <div class="card">
+        <form action="comment_insert.php" method="post">
+            <input type="hidden" name="location_id" value="<?php echo $row['id'];?>" />
+            <textarea name="content" cols="18" rows="4"></textarea><br />
+        <input type="submit" value="Shrani" />
+        </form>
     </div>
-</div>
-<div class="row">
-    <?php $query = "SELECT c.*, u.username FROM comments c INNER JOIN users u 
-    ON c.fk_idusers = u.idusers WHERE c.fk_idanimals = ? ORDER BY c.date_add DESC";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$animal_id]);
-        $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach($comments as $comment): ?>
-        <div class="col-lg-3 col-md-6 col-sm-9 col-12 acomment">
-            <div class="acomment-meta">
-               <?=$comment['username']?> @ <?=$comment['date_add']?>
-            </div>
-        </div>
-        <?php endforeach; ?>
 </div>
 <?=template_footer()?>
 

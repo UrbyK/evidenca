@@ -23,22 +23,22 @@
 
 <?=template_header("Živali")?>
 <?php foreach($animals as $animal): ?>
-<div class="row">
-    <table class="table-responsive-lg table table-dark">
+<div class="row animal-table">
+    <table class="table-responsive-lg">
         <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Ime</th>
-                <th scope="col">Oznaka</th>
-                <th scope="col">Vrsta</th>
-                <th scope="col">Pasma</th>
-                <th scope="col">Spol</th>
+                <th></th>
+                <th>Ime</th>
+                <th>Oznaka</th>
+                <th>Vrsta</th>
+                <th>Pasma</th>
+                <th>Spol</th>
                 <?php if($animal['tag'] == 'F'): ?>
-                    <th scope="col">Brejost</th>
+                    <th>Brejost</th>
                 <?php endif; ?>
-                <th scope="col">Zdravje</th>
-                <th scope="col">Mati</th>
-                <th scope="col">Oče</th>
+                <th>Zdravje</th>
+                <th>Mati</th>
+                <th>Oče</th>
             </tr>
         </thead>
         <tbody>
@@ -79,7 +79,6 @@
 
         <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>
             <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
-            <button class="btn btn-primary">Odstrani</button>
         <?php endif; ?>
                     
 
@@ -91,7 +90,7 @@
 <div class="row justify-content-center">
     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group mr-2" id="page-btn" role="group" aria-label="First group">
-            <?php for($i = 0; $i <= ($total_animals/$num_of_animals_per_page); $i++): ?>
+            <?php for($i = 0; $i <= ($total_animals/$num_of_animals_per_page)-2; $i++): ?>
                 <a href="./index.php?page=animals&p=<?=$i + 1?>"><button type="button" class="btn btn-secondary"><?=$i + 1?></button></a>
             <?php endfor; ?>
         </div>

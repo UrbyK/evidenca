@@ -150,14 +150,14 @@
 </div>
 <div class="row">
     <?php $query = "SELECT c.*, u.username FROM comments c INNER JOIN users u 
-    ON c.fk_idusers = u.idusers WHERE c.fk_idanimals = ? ORDER BY c.date_add DESC";
-        $stmt = $pdo->prepare($query);
+    ON c.fk_idusers = u.idusers WHERE c.fk_idanimals = ? ORDER BY c.date_add DESC;";
+        $stmt = $pdo->prepare($querry);
         $stmt->execute([$animal_id]);
         $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach($comments as $comment): ?>
         <div class="col-lg-3 col-md-6 col-sm-9 col-12 acomment">
             <div class="acomment-meta">
-               <?=$comment['username']?> @ <?=$comment['date_add']?>
+                <?=$comment['date_add']?>
             </div>
         </div>
         <?php endforeach; ?>

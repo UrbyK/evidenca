@@ -485,64 +485,6 @@ input{
     text-decoration: none;
 }
 
-/* ANIMAL SHOW */
-/* .animal-table{
-    margin: 5px;
-}
-.animal-table table{
-    width: 100%;
-}
-
-.animal-table table th{
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.animal-table table,
-.animal-table table tr td,
-.animal-table table tr th{
-    margin: 15px auto 0 auto;
-    border: 2px solid #353535;
-    box-shadow: 0 0 0 3px hsl(0, 0%, 70%);
-    max-height: 150px;
-}
-
-.animal-table table td{
-    min-width: 100px;
-    max-height: 150px;
-
-}
-
-
-.animal-table{
-	display: flex;
-    padding: 15px 25px 15px 0px;
-}
-
-.animal img{
-  max-width: 100%;
-  margin: 0 auto;
-  border: 2px solid #aaa;
-  border-radius: 10px;
-  align-content: center;
-}
-
-.animal-info{
-  margin: auto 0;
-  padding-right: 5%;
-  padding-bottom: 55px;
-  background-color: #efefef;
-}
-
-.animal-info h1 {
-	font-size: 34px;
-	font-weight: normal;
-	margin: 0;
-  padding: 20px 0 10px 0;
-  color: #1b9bff;
-  font-family:  'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-} */
-
 .home-row{
     height: 60vh;
 }

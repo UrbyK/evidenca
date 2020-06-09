@@ -61,6 +61,9 @@
                             <button class="dropbtn">Živali</button>
                             <div class="dropdown-content">
                                 <a class="nav-link" href="./index.php?page=animals">Vse živali</a>
+                                <a href="#">Govedo</a>
+                                <a href="#">Koze</a>
+                                <a href="#">Ovce</a>
                             </div>
                         </div>
                     </li>
