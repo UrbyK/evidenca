@@ -77,7 +77,7 @@
         
         <a href="./index.php?page=animal&id=<?=$animal['idanimals']?>" class="btn btn-primary">Pogled</a>
 
-        <?php if(is_admin() || $_SESSION['user_id'] == $animal['fk_idusers']): ?>
+        <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>
             <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
             <button class="btn btn-primary">Odstrani</button>
         <?php endif; ?>

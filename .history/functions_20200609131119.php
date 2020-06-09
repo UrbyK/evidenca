@@ -35,7 +35,7 @@ function get_user($userid){
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach($result as $item):
-        return $item['username'];
+        echo $item['username'];
     endforeach;
 }
 

@@ -20,7 +20,6 @@
         }
 
         $breed = $_POST['breed'];
-        $pregnancy = $_POST['pregnancy'];
 
         $health = $_POST['health'];
 

@@ -4,7 +4,7 @@
 
     // check to make sure the id parameter is specified in the URL
     if (isset($_GET['id'])){
-        $_SESSION['animal_id'] = $_GET['id'];
+        $animal_id = $_GET['id'];
         // prepare statement and execute, prevents SQL injection
         $stmt = $pdo->prepare('SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
         INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds 
@@ -56,21 +56,8 @@
                                             $users = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
                                         
                                             <?php foreach($users as $user): ?>
-                                        <input list="owners" type="text" name="owner" id="owner" value="<?=$user['username']?>">
+                                        <input type="text" name="owner" id="owner" value="<?=$user['fname']?> <?=$user['lname']?>" disabled>
                                             <?php endforeach; ?>
-
-                                        <?php $query = "SELECT * FROM users";
-                                                $stmt = $pdo->prepare($query);
-                                                $stmt->execute();
-                                                $owners = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
-                                        <datalist id="owners">
-
-                                            <?php foreach ($owners as $owner): ?>
-                                                    <option value="<?=$owner['fname']?> <?=$owner['lname']?>; <?=$owner['username']?>">
-                                                <?php endforeach; ?>
-
-                                        </datalist>    
-                          
                                     </div>
                                     <div class="form-group">
                                         <label>Rojstvo:</label>
@@ -93,9 +80,8 @@
                                         
                                             <?php foreach($mothers as $mother): ?>
                                                 <input type="text" name="mother" id="mother" value="<?=$mother['ear_tag']?>: <?=$mother['name']?>" disabled>
-                                                <?php endforeach; ?>
-                                    </div>
-                                    <div class="form-group">
+                                            <?php endforeach; ?>
+
                                         <label for="father">Oče:</label>
                                         <?php $querry = "SELECT * FROM animals a WHERE idanimals ='".$animal['idfather']."' ";
                                             $stmt = $pdo->prepare($querry);
@@ -115,47 +101,21 @@
                                             $stmt->execute();
                                             $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
                                                 <?php foreach($pregnancies as $pregnancy): ?>
-                                                    <input list="pregnancies" type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>">
+                                                    <input type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>" disabled>
                                                 <?php endforeach; ?>
 
-                                                <?php $query = "SELECT * FROM pregnancies";
-                                                $stmt = $pdo->prepare($query);
-                                                $stmt->execute();
-                                                $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
-                                        <datalist id="pregnancies">
-
-                                            <?php foreach ($pregnancies as $pregnancy): ?>
-                                                    <option value="<?=$pregnancy['pregnancy']?>">
-                                                <?php endforeach; ?>
-
-                                        </datalist>    
-                                    </div>
-                                    <div class="form-group">
                                         <label for="health">Zdravje:</label>
                                         <?php $querry="SELECT * FROM health WHERE idhealth = '".$animal['fk_idhealth']."'";
                                             $stmt = $pdo->prepare($querry);
                                             $stmt->execute();
                                             $health = $stmt->fetchAll(PDO::FETCH_ASSOC);?>
                                             <?php foreach($health as $status): ?>
-                                                <input list="health" type="text" name="health" id="heal" value="<?=$status['status']?>">
+                                                <input type="text" name="health" id="helath" value="<?=$status['status']?>" disabled>
                                             <?php endforeach; ?>
-
-                                            <?php $query = "SELECT * FROM health";
-                                                $stmt = $pdo->prepare($query);
-                                                $stmt->execute();
-                                                $health = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
-                                        <datalist id="health">
-
-                                            <?php foreach ($health as $status): ?>
-                                                    <option value="<?=$status['status']?>">
-                                                <?php endforeach; ?>
-
-                                        </datalist> 
-
                                     </div>
-                                    <?php if(is_admin() || $_SESSION['user_id'] == $animal['fk_idusers']): ?>
+                                    <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>
                                     <div class="col-md-6">
-                                    <button type="submit" name="update" class="btn btn-primary" id="update" value="Shrani">Shrani</button>
+                                       <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
                                     </div>
                                     <?php endif; ?>
                                 </form>
@@ -166,34 +126,51 @@
             </div>
         </div>
     </div>
+    <div class="comments">
+        <div class="card"> 
+                <h3 class="card-title">Komentiraj</h3>
+            <div class ="card-body">
+                <form action="./inc/comment-insert.inc.php" method="post">
+                    <input type="hidden" name="animal_id" value="<?=$animal_id?>" />
+                    <select name="rate">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <br />
+                    <textarea name="content" cols="18" rows="4" id="styled" placeholder="Komentarji..."></textarea>
+
+                    <input class="btn btn-primary" type="submit" value="Shrani" />
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-
-<script>
-    $("#update").click(function(e){
-        e.preventDefault();
-
-        var username = $( "#owner" ).val();
-        var pregnancy = $( "#pregnancy" ).val();
-        var health = $( "#heal" ).val();
-
-        console.log(username);
-        console.log(pregnancy);
-        console.log(health);
-
-        $.ajax({
-            type: 'POST',
-            data: 'username=' + username + '&pregnancy=' + pregnancy + '&health=' + health,
-            url:'./inc/animal.update.inc.php',
-            success:function(data){
-                alert(data);
-            }
-
-        });
-
-
-
-    })
-</script>
+<div class="row">
+    <?php $query = "SELECT c.*, u.username FROM comments c INNER JOIN users u 
+    ON c.fk_idusers = u.idusers WHERE c.fk_idanimals = ? ORDER BY c.date_add DESC";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$animal_id]);
+        $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach($comments as $comment): ?>
+        <div class="col-lg-3 col-md-6 col-sm-9 col-12 acomment">
+            <div class="acomment-meta">
+               <?=$comment['username']?> @ <?=$comment['date_add']?>
+               <?php for($i=0; $i<5; $i++):
+                   if($i<$comment['rating']): ?>
+                    <span class="fa fa-star checked"></span>
+                   <?php else: ?>
+                    <span class="fa fa-star"></span>
+                   <?php endif; endfor; ?>
+            </div>
+            <div class="card">
+                <?=$comment['content']?>
+            </div>
+        </div>
+        <?php endforeach; ?>
+</div>
 <?=template_footer()?>
 
 

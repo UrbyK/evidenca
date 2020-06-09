@@ -52,7 +52,6 @@
                                 $mothers = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
 
                             <select name="mother" id="mother">
-                                <option value="">N/A</option>
                                 <?php foreach($mothers as $mother): ?>
                                     <option value="<?=$mother['idanimals']?>"><?=$mother['ear_tag']?> <?=$mother['name']?></option>
                                 <?php endforeach; ?>
@@ -65,7 +64,6 @@
                                 $fathers = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
 
                             <select name="father" id="father">
-                                <option value="">N/A</option>
                                 <?php foreach($fathers as $father): ?>
                                     <option value="<?=$father['idanimals']?>"><?=$father['ear_tag']?> <?=$father['name']?></option>
                                 <?php endforeach; ?>
