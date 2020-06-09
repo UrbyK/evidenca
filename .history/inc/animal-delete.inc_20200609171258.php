@@ -41,8 +41,7 @@
     $query = "DELETE FROM animals WHERE idanimals = $animal_id";
     $pdo->exec($query);
 
-    echo "<script type='text/javascript'> document.location = '../index.php?page=animals'; </script>";
-
+    
     exit();
 
 ?>

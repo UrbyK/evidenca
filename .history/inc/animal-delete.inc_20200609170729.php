@@ -3,7 +3,7 @@
     $pdo = pdo_connect_mysql();
     $animal_id = $_GET['id'];
     
-    $base_directory = '../';
+    $base_directory = './uploads/';
 
     $query = "SELECT * FROM photos p WHERE p.fk_idanimals = $animal_id";
     $stmt = $pdo->prepare($query);
@@ -41,8 +41,7 @@
     $query = "DELETE FROM animals WHERE idanimals = $animal_id";
     $pdo->exec($query);
 
-    echo "<script type='text/javascript'> document.location = '../index.php?page=animals'; </script>";
-
+    
     exit();
 
 ?>

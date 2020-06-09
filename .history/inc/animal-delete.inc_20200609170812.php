@@ -2,8 +2,6 @@
     include_once('./dbh.inc.php');
     $pdo = pdo_connect_mysql();
     $animal_id = $_GET['id'];
-    
-    $base_directory = '../';
 
     $query = "SELECT * FROM photos p WHERE p.fk_idanimals = $animal_id";
     $stmt = $pdo->prepare($query);
@@ -11,7 +9,7 @@
     $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach($photos as $photo){
-        unlink($base_directory.$photo['url']);
+        unlink($photo['url']);
     }
 
     $query = "DELETE FROM photos WHERE fk_idanimals = $animal_id";
@@ -41,8 +39,7 @@
     $query = "DELETE FROM animals WHERE idanimals = $animal_id";
     $pdo->exec($query);
 
-    echo "<script type='text/javascript'> document.location = '../index.php?page=animals'; </script>";
-
+    
     exit();
 
 ?>
