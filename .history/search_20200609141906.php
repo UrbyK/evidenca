@@ -13,8 +13,7 @@ $search_item = "";
         INNER JOIN sex s  ON a.fk_idsex = s.idsex 
         LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
         LEFT JOIN users u ON a.fk_idusers = u.idusers
-        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.name LIKE '%".$search_item."%' OR a.ear_tag LIKE '%".$search_item."%'
-        OR lower(aty.type) LIKE lower('%".$search_item."%')" );
+        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.name LIKE '%".$search_item."%' OR a.ear_tag LIKE '%".$search_item."%'");
 
 $stmt->execute();
 
@@ -55,7 +54,7 @@ $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </thead>
         <tbody>
             <tr>
-                <td align="center"><img src="<?=$animal['url']?>" style="max-height: 125px;"></td>
+                <td><img src="<?=$animal['url']?>" style="max-height: 125px;"></td>
                 <td><?=$animal['name']?></td></a>
                 <td><?=$animal['ear_tag']?></td>
                 <td><?=$animal['type']?></td>

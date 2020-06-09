@@ -31,6 +31,8 @@
     } catch(PDOException $e){
         echo $sql . $e->getMessage();
     }
+    echo "<script type='text/javascript'> document.location = '../index.php?page=animal&id=$idanimal'; </script>";
+        exit();
 
     exit();
 ?>

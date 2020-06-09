@@ -488,7 +488,6 @@ input{
 /* ANIMAL SHOW */
 .animal-table{
     margin: 5px;
-    box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
 }
 .animal-table table{
     width: 100%;
@@ -512,19 +511,11 @@ input{
     min-width: 100px;
     max-height: 150px;
     vertical-align: middle;
-    color: #353535;
-    border-bottom: 2px solid #aaa;
+    color: red;
 }
 
 .animal-table table tr th{
-    border: 2px solid #aaa;
-    box-shadow: 0px 8px 16px 0px rgba(75, 75, 75, 0.2); 
-}
-.animal-table table tr td{
-    border-right: 1px solid #aaa;
-}
-.animal-table table tr td:last-child{
-    border-right: none; 
+    border-bottom: 5px solid #aaa;
 }
 
 .animal-table{
@@ -533,7 +524,7 @@ input{
 }
 
 .animal img{
-  max-width: 450px;
+  max-width: 100%;
   width: 100%;
   height: auto;
   margin: 25px auto 0 auto;
@@ -582,9 +573,6 @@ input{
 
 .comments .card{
     width: 100%;
-}
-.comments .card .card-title{
-    margin: 25px 0 0 25px;
 }
 
 textarea#styled {

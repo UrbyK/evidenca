@@ -46,7 +46,7 @@
                         
                         <div class="form-group">
                             <label for="mother">Mati:</label>
-                            <?php $querry = "SELECT * FROM animals a INNER JOIN sex s ON a.fk_idsex=s.idsex WHERE lower(s.tag) = lower('F')";
+                            <?php $querry = "SELECT * FROM animals a INNER JOIN sex s ON a.fk_idsex=s.idsex WHERE s.tag = 'F'";
                                 $stmt = $pdo->prepare($querry);
                                 $stmt->execute();
                                 $mothers = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
@@ -59,7 +59,7 @@
                             </select>
 
                             <label for="father">Oče:</label>
-                            <?php $querry = "SELECT * FROM animals a INNER JOIN sex s ON a.fk_idsex=s.idsex WHERE lower(s.tag) = lower('M')";
+                            <?php $querry = "SELECT * FROM animals a INNER JOIN sex s ON a.fk_idsex=s.idsex WHERE s.tag = 'M'";
                                 $stmt = $pdo->prepare($querry);
                                 $stmt->execute();
                                 $fathers = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>

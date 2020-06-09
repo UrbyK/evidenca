@@ -1,6 +1,8 @@
-INSERT INTO pregnancies(status)
+INSERT INTO pregnancies(pregnancy)
+VALUES('Ne');
+INSERT INTO pregnancies(pregnancy)
 VALUES('Breja');
-INSERT INTO pregnancies(status)
+INSERT INTO pregnancies(pregnancy)
 VALUES('Zvergla/Splav');
-INSERT INTO pregnancies(status)
+INSERT INTO pregnancies(pregnancy)
 VALUES('Osemenitev');

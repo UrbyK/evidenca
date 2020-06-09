@@ -21,6 +21,8 @@
                 $stmt->execute([$username, $health, $pregnancies, $idanimal]);
 
                 echo "Uspešno";
+                echo "<script type='text/javascript'> document.location = '../index.php?page=animal&id=$idanimal'; </script>";
+
                 exit();
             }
 

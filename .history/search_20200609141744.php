@@ -13,8 +13,7 @@ $search_item = "";
         INNER JOIN sex s  ON a.fk_idsex = s.idsex 
         LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
         LEFT JOIN users u ON a.fk_idusers = u.idusers
-        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.name LIKE '%".$search_item."%' OR a.ear_tag LIKE '%".$search_item."%'
-        OR lower(aty.type) LIKE lower('%".$search_item."%')" );
+        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.name LIKE '%".$search_item."%' OR a.ear_tag LIKE '%".$search_item."%'");
 
 $stmt->execute();
 
@@ -35,27 +34,27 @@ $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?=template_header("Živali")?>
 <?php foreach($animals as $animal): ?>
-    <div class="row animal-table">
-    <table class="table-responsive-lg table">
+<div class="row animal-table">
+    <table class="table-responsive-lg">
         <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Ime</th>
-                <th scope="col">Oznaka</th>
-                <th scope="col">Vrsta</th>
-                <th scope="col">Pasma</th>
-                <th scope="col">Spol</th>
+                <th></th>
+                <th>Ime</th>
+                <th>Oznaka</th>
+                <th>Vrsta</th>
+                <th>Pasma</th>
+                <th>Spol</th>
                 <?php if($animal['tag'] == 'F'): ?>
-                    <th scope="col">Brejost</th>
+                    <th>Brejost</th>
                 <?php endif; ?>
-                <th scope="col">Zdravje</th>
-                <th scope="col">Mati</th>
-                <th scope="col">Oče</th>
+                <th>Zdravje</th>
+                <th>Mati</th>
+                <th>Oče</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td align="center"><img src="<?=$animal['url']?>" style="max-height: 125px;"></td>
+                <td><img src="<?=$animal['url']?>" style="max-height: 150px;"></td>
                 <td><?=$animal['name']?></td></a>
                 <td><?=$animal['ear_tag']?></td>
                 <td><?=$animal['type']?></td>
@@ -91,7 +90,6 @@ $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <?php if(is_admin() || $_SESSION['user_id'] == $animal['fk_idusers']): ?>
             <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
-            <button class="btn btn-primary">Odstrani</button>
         <?php endif; ?>
                     
 
