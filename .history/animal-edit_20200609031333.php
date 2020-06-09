@@ -55,8 +55,21 @@
                                             $users = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
                                         
                                             <?php foreach($users as $user): ?>
-                                        <input type="text" name="owner" id="owner" value="<?=$user['fname']?> <?=$user['lname']?>" disabled>
+                                        <input list="owners" type="text" name="owner" id="owner" value="<?=$user['fname']?> <?=$user['lname']?>; <?=$user['username']?>">
                                             <?php endforeach; ?>
+
+                                        <?php $query = "SELECT * FROM users";
+                                                $stmt = $pdo->prepare($query);
+                                                $stmt->execute();
+                                                $owners = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
+                                        <datalist id="owners">
+
+                                            <?php foreach ($owners as $owner): ?>
+                                                    <option value="<?=$owner['fname']?> <?=$owner['lname']?>; <?=$owner['username']?>">
+                                                <?php endforeach; ?>
+
+                                        </datalist>    
+                          
                                     </div>
                                     <div class="form-group">
                                         <label>Rojstvo:</label>
@@ -100,8 +113,20 @@
                                             $stmt->execute();
                                             $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
                                                 <?php foreach($pregnancies as $pregnancy): ?>
-                                                    <input type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>" disabled>
+                                                    <input list="pregnancies" type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>">
                                                 <?php endforeach; ?>
+
+                                                <?php $query = "SELECT * FROM pregnancies";
+                                                $stmt = $pdo->prepare($query);
+                                                $stmt->execute();
+                                                $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
+                                        <datalist id="pregnancies">
+
+                                            <?php foreach ($pregnancies as $pregnancy): ?>
+                                                    <option value="<?=$pregnancy['pregnancy']?>">
+                                                <?php endforeach; ?>
+
+                                        </datalist>    
 
                                         <label for="health">Zdravje:</label>
                                         <?php $querry="SELECT * FROM health WHERE idhealth = '".$animal['fk_idhealth']."'";
@@ -109,12 +134,25 @@
                                             $stmt->execute();
                                             $health = $stmt->fetchAll(PDO::FETCH_ASSOC);?>
                                             <?php foreach($health as $status): ?>
-                                                <input type="text" name="health" id="helath" value="<?=$status['status']?>" disabled>
+                                                <input list="healt" type="text" name="health" id="health" value="<?=$status['status']?>">
                                             <?php endforeach; ?>
+
+                                            <?php $query = "SELECT * FROM pregnancies";
+                                                $stmt = $pdo->prepare($query);
+                                                $stmt->execute();
+                                                $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
+                                        <datalist id="helath">
+
+                                            <?php foreach ($pregnancies as $pregnancy): ?>
+                                                    <option value="<?=$pregnancy['pregnancy']?>">
+                                                <?php endforeach; ?>
+
+                                        </datalist> 
+
                                     </div>
                                     <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>
                                     <div class="col-md-6">
-                                       <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
+                                    <button type="submit" name="update" class="btn btn-primary" id="update" value="Shrani">Shrani</button>
                                     </div>
                                     <?php endif; ?>
                                 </form>

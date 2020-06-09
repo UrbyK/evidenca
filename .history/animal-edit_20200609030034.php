@@ -114,7 +114,7 @@
                                     </div>
                                     <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>
                                     <div class="col-md-6">
-                                       <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
+                                       <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Save</a>
                                     </div>
                                     <?php endif; ?>
                                 </form>

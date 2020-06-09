@@ -1,32 +1,37 @@
-<?php 
+<?php
 
+    $search_item = "";
+    if(!empty($_GET['search']) && isset($_GET['search_btn'])){
 
+        $search_item = $_GET['search'];
 
-    // check to make sure the id parameter is specified in the URL
-    if (isset($_GET['id'])){
-        // prepare statement and execute, prevents SQL injection
-        $stmt = $pdo->prepare('SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
+        $stmt = $pdo->prepare("SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
         INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds 
         INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
         INNER JOIN sex s  ON a.fk_idsex = s.idsex 
         LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
         LEFT JOIN users u ON a.fk_idusers = u.idusers
-        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.idanimals = ?');
-        $stmt->execute([$_GET['id']]);
-        // fetch from database, return as an array
-        $animal = $stmt->fetch(PDO::FETCH_ASSOC);
-        // check if product exist (array not empty)
-        if (!$animal){
-            // Simple error ro display id the id doen't exist/ is empty
-            die('Animal does not exist!');
-        }
+        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.name LIKE '%".$search_item."%' OR a.ear_tag LIKE '%".$search_item."%'");
 
-    } else {
-        // simple error if ID wasn't specified
-        die('Animal ID was not specified!');
+        $stmt = $pdo->prepare("SELECT * FROM products p INNER JOIN products_image pim 
+        ON p.idproducts = pim.products_idproducts WHERE name LIKE '%".$search_item."%'");
+        $stmt->execute([$search_item]);
+
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    /*
+        foreach($products as $product){
+            echo $product['name']."<br />\n";
+        }*/
+    
+    }
+    else{
+        header("Location: ./#");
+        exit();
     }
 
+
 ?>
+
 
 <?=template_header("Žival")?>
 <div class="row">
@@ -127,5 +132,3 @@
     </div>
 </div>
 <?=template_footer()?>
-
-

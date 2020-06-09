@@ -100,7 +100,7 @@
                                             $stmt->execute();
                                             $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
                                                 <?php foreach($pregnancies as $pregnancy): ?>
-                                                    <input type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>" disabled>
+                                                    <input type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>: <?=$father['name']?>" disabled>
                                                 <?php endforeach; ?>
 
                                         <label for="health">Zdravje:</label>

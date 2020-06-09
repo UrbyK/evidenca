@@ -8,13 +8,21 @@
       <!--Column-->
       <div class="col-lg-6 col-md-6 col-sm-6 col-12">            
         <div class="footer-pad">
+          <h4>Heading 1</h4>
+          <ul class="list-unstyled">
+            <li><a href="#">Payment Center</a></li>
+            <li><a href="#">Contact Directory</a></li>
+            <li><a href="#">Forms</a></li>
+            <li><a href="#">News and Updates</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li></li>
+          </ul>
         </div> <!-- footer-pad -->
       </div> <!-- col col-lg col-md col-sm -->
       <!-- Column end -->
 
-      <div class=" col-12">
-
-        <h4>Sledite nam!</h4> 
+      <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+        <h4>Follow Us</h4>
         <ul class="social-network social-circle">
           <li><a href="https://www.facebook.com" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
           <li><a href="https://www.linkedin.com" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>

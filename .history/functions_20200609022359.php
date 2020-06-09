@@ -27,7 +27,6 @@ function is_admin() {
     else {
         return false;
     }
-}
 
 
 ?>

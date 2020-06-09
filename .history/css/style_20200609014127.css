@@ -515,8 +515,8 @@ input{
 
 
 .animal {
-	display: flex;
-  padding: 40px 25px 40px 0px;
+    display: flex;
+    margin: 40px 25px 40px 0px;
 }
 
 .animal img{

@@ -55,8 +55,21 @@
                                             $users = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
                                         
                                             <?php foreach($users as $user): ?>
-                                        <input type="text" name="owner" id="owner" value="<?=$user['fname']?> <?=$user['lname']?>" disabled>
-                                            <?php endforeach; ?>
+                                        <input list="owners" type="text" name="owner" id="owner" value="<?=$user['fname']?> <?=$user['lname']?>; <?=$user['username']?>" disabled>
+                                       
+
+                                        <?php $count = "SELECT * FROM countries";
+                                                $yolo = $pdo->prepare($count);
+                                                $yolo->execute();
+                                                $countries = $yolo->fetchAll(PDO::FETCH_ASSOC); ?>
+                                        <datalist id="countries">
+
+                                            <?php foreach ($countries as $country): ?>
+                                                    <option value="<?=$country['country']?>">
+                                                <?php endforeach; ?>
+
+</datalist>    
+                                        <?php endforeach; ?>
                                     </div>
                                     <div class="form-group">
                                         <label>Rojstvo:</label>
@@ -114,7 +127,7 @@
                                     </div>
                                     <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>
                                     <div class="col-md-6">
-                                       <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
+                                    <button type="submit" name="update" class="btn btn-primary" id="update" value="Shrani">Shrani</button>
                                     </div>
                                     <?php endif; ?>
                                 </form>

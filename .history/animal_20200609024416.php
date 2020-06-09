@@ -99,9 +99,12 @@
                                             $stmt = $pdo->prepare($querry);
                                             $stmt->execute();
                                             $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
+                                        <select name="pregnancy" id="pregnancy">
+                                            <option value="">N/A</option>
                                                 <?php foreach($pregnancies as $pregnancy): ?>
-                                                    <input type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>" disabled>
+                                                    <option value="<?=$pregnancy['idpregnancies']?>"><?=$pregnancy['pregnancy']?></option>
                                                 <?php endforeach; ?>
+                                        </select>
 
                                         <label for="health">Zdravje:</label>
                                         <?php $querry="SELECT * FROM health WHERE idhealth = '".$animal['fk_idhealth']."'";
@@ -109,7 +112,7 @@
                                             $stmt->execute();
                                             $health = $stmt->fetchAll(PDO::FETCH_ASSOC);?>
                                             <?php foreach($health as $status): ?>
-                                                <input type="text" name="health" id="helath" value="<?=$status['status']?>" disabled>
+                                                <input type="text" name="health" id="helath" value="<?=$status['status']?>: <?=$father['name']?>" disabled>
                                             <?php endforeach; ?>
                                     </div>
                                     <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>

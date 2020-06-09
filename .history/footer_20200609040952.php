@@ -5,16 +5,9 @@
 <div class="footer-wrapper"> 
   <div class="container container-footer">
     <div class="row">
-      <!--Column-->
-      <div class="col-lg-6 col-md-6 col-sm-6 col-12">            
-        <div class="footer-pad">
-        </div> <!-- footer-pad -->
-      </div> <!-- col col-lg col-md col-sm -->
-      <!-- Column end -->
 
-      <div class=" col-12">
-
-        <h4>Sledite nam!</h4> 
+      <div class="col-12">
+        <h4>Sledite nam!</h4>
         <ul class="social-network social-circle">
           <li><a href="https://www.facebook.com" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
           <li><a href="https://www.linkedin.com" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>

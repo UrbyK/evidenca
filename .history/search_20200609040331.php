@@ -1,24 +1,35 @@
-<?php 
-    $num_of_animals_per_page = 8;
+<?php
 
-    $current_page = isset($_GET['p']) && is_numeric($_GET['p']) ? (int)$_GET['p'] : 1;
+include_once('./functions.php');
+$pdo = pdo_connect_mysql();
+$search_item = "";
+    if(!empty($_GET['search']) && isset($_GET['search_btn'])){
+
+        $search_item = $_GET['search'];
+
+        $stmt = $pdo->prepare("SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
+        INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds 
+        INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
+        INNER JOIN sex s  ON a.fk_idsex = s.idsex 
+        LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
+        LEFT JOIN users u ON a.fk_idusers = u.idusers
+        INNER JOIN health h ON a.fk_idhealth = h.idhealth WHERE a.name LIKE '%".$search_item."%' OR a.ear_tag LIKE '%".$search_item."%'");
+
+$stmt->execute();
+
+$animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    /*
+        foreach($products as $product){
+            echo $product['name']."<br />\n";
+        }*/
+    
+    }
+    else{
+        header("Location: ./#");
+        exit();
+    }
 
 
-    $query="SELECT * FROM animals a LEFT JOIN photos p ON a.idanimals = p.fk_idanimals
-    INNER JOIN breeds b ON a.fk_idbreeds = b.idbreeds INNER JOIN animal_types aty ON b.fk_idanimal_types = aty.idanimal_types
-    INNER JOIN sex s  ON a.fk_idsex = s.idsex LEFT JOIN pregnancies prg ON a.fk_idpregnancies = prg.idpregnancies
-    INNER JOIN health h ON a.fk_idhealth = h.idhealth
-    ORDER BY idanimals DESC LIMIT ?, ?";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute();
-
-    $stmt->bindValue(1, ($current_page - 1) * $num_of_animals_per_page, PDO::PARAM_INT);
-    $stmt->bindValue(2, $num_of_animals_per_page, PDO::PARAM_INT);
-    $stmt->execute();
-
-    $animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $total_animals = $pdo->query('SELECT * FROM animals')->rowCount();
 ?>
 
 <?=template_header("Živali")?>

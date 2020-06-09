@@ -13,8 +13,8 @@
       <!-- Column end -->
 
       <div class=" col-12">
-
-        <h4>Sledite nam!</h4> 
+        <div class="footer-pad">
+        <h4>Sledite nam!</h4>
         <ul class="social-network social-circle">
           <li><a href="https://www.facebook.com" target="_blank" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
           <li><a href="https://www.linkedin.com" target="_blank" class="icoLinkedin" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>

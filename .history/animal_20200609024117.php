@@ -95,26 +95,31 @@
                                             
                                     <div class="form-group">
                                         <label for="pregnancy">Brejost:</label>
-                                        <?php $querry="SELECT * FROM pregnancies WHERE idpregnancies ='".$animal['fk_idpregnancies']."' ";
+                                        <?php $querry="SELECT * FROM pregnancies";
                                             $stmt = $pdo->prepare($querry);
                                             $stmt->execute();
                                             $pregnancies = $stmt->fetchAll(PDO::FETCH_ASSOC); ?>
+                                        <select name="pregnancy" id="pregnancy">
+                                            <option value="">N/A</option>
                                                 <?php foreach($pregnancies as $pregnancy): ?>
-                                                    <input type="text" name="pregnancy" id="pregnancy" value="<?=$pregnancy['pregnancy']?>" disabled>
+                                                    <option value="<?=$pregnancy['idpregnancies']?>"><?=$pregnancy['pregnancy']?></option>
                                                 <?php endforeach; ?>
+                                        </select>
 
                                         <label for="health">Zdravje:</label>
-                                        <?php $querry="SELECT * FROM health WHERE idhealth = '".$animal['fk_idhealth']."'";
+                                        <?php $querry="SELECT * FROM health";
                                             $stmt = $pdo->prepare($querry);
                                             $stmt->execute();
                                             $health = $stmt->fetchAll(PDO::FETCH_ASSOC);?>
+                                        <select name="health" id="health" required>
                                             <?php foreach($health as $status): ?>
-                                                <input type="text" name="health" id="helath" value="<?=$status['status']?>" disabled>
+                                                <option value="<?=$status['idhealth']?>"><?=$status['status']?></option>
                                             <?php endforeach; ?>
+                                        </select>
                                     </div>
                                     <?php if(is_admin() || isset($_SESSION['user_id']) == $animal['fk_idusers']): ?>
                                     <div class="col-md-6">
-                                       <a href="./index.php?page=animal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
+                                       <a href="./index.php?page=enimal-edit&id=<?=$animal['idanimals']?>" class="btn btn-primary">Uredi</a>
                                     </div>
                                     <?php endif; ?>
                                 </form>
